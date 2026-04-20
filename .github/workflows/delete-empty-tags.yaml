@@ -1,8 +1,9 @@
 name: delete empty tags
 on:
   workflow_dispatch: # Allows manual trigger
-  schedule:
-    - cron: '30 5 * * *' # Runs daily at 5:30am
+  # schedule: DISABLED on autobuild fork — manual dispatch only
+  # schedule:
+    # - cron: '30 5 * * *' # Runs daily at 5:30am
 
 
 env:

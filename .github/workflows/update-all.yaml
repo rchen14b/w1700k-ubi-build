@@ -1,12 +1,13 @@
 name: update-all
 
 on:
-  schedule:
-    - cron: '15 */2 * * *'
+  # schedule: DISABLED on autobuild fork — manual dispatch only
+  # schedule:
+    # - cron: '15 */2 * * *'
   workflow_dispatch:
 
 env:
-  REMOTE_REPOSITORY: OpenWRT-fanboy/OpenW1700k
+  REMOTE_REPOSITORY: rchen14b/openwrt_rchen14b
 
 jobs:
   update:
@@ -14,7 +15,7 @@ jobs:
     runs-on: ubuntu-slim
     strategy:
       matrix:
-        environment: [main, snapshot, minimal-OC-ubi-AUTO]
+        environment: [w1700k_autobuild]
     permissions:
       contents: write
     environment: ${{ matrix.environment }}

@@ -1,12 +1,13 @@
 name: update-test
 
 on:
-  schedule:
-    - cron: '15 */2 * * *'
+  # schedule: DISABLED on autobuild fork — manual dispatch only
+  # schedule:
+    # - cron: '15 */2 * * *'
   workflow_dispatch:
 
 env:
-  REMOTE_REPOSITORY: OpenWRT-fanboy/OpenW1700k
+  REMOTE_REPOSITORY: rchen14b/openwrt_rchen14b
 
 jobs:
   update:

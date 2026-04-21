@@ -33,6 +33,10 @@ configure_docker() {
 }
 
 login_to_registry() {
+  if [ -z "${DK_USERNAME}" ] || [ -z "${DK_PASSWORD}" ]; then
+    echo "DK_USERNAME/DK_PASSWORD unset, skipping docker login (builds cache-miss every run)"
+    return 0
+  fi
   echo "${DK_PASSWORD}" | docker login -u "${DK_USERNAME}" --password-stdin "${DK_REGISTRY}"
 }
 

@@ -28,7 +28,7 @@ jobs:
           - normal
         # ########### Add your target name below ###########
         # E.g. target: [x86_64, wdr4310v1]
-        target: [minimal-oc-ubi, SNAPSHOT, w1700k_autobuild]
+        target: [w1700k_autobuild]
         include:
         - mode: normal
           title: Build

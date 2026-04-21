@@ -3,6 +3,9 @@ name: fastbuild oc-ubi and snapshot
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 env:
   DK_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DK_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

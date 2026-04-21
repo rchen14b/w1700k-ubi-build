@@ -61,8 +61,9 @@ if [ "x${OPENWRT_CUR_DIR}" != "x${OPENWRT_COMPILE_DIR}" ] && [ -d "${OPENWRT_COM
   git fetch
   git checkout "${REPO_BRANCH}"
   git pull --rebase
-  git log origin/main.."${REPO_BRANCH}" --oneline > files/build_info
-  cp files/build_info "${BUILDER_BIN_DIR}"
+  mkdir -p files
+  git log origin/main.."${REPO_BRANCH}" --oneline > files/build_info 2>/dev/null || echo "(no commits ahead of main)" > files/build_info
+  cp files/build_info "${BUILDER_BIN_DIR}" 2>/dev/null || true
 fi
 
 link_bin

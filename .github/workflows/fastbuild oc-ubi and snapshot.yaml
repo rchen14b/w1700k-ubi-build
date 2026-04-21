@@ -126,7 +126,7 @@ jobs:
           gh release delete "$VERSION" --cleanup-tag -y
         fi
         # Create the new release
-        FILES_TO_UPLOAD=$(find ./openwrt_firmware -maxdepth 1 -type f -name "*sysupgrade.itb")
+        FILES_TO_UPLOAD=$(find ./openwrt_firmware -maxdepth 1 -type f \( -name "*sysupgrade.itb" -o -name "*chainload-uboot.itb" -o -name "*-recovery.itb" \))
         gh release create "$VERSION" $FILES_TO_UPLOAD \
           --title "$VERSION"
 

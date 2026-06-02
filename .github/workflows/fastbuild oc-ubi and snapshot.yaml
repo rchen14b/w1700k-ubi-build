@@ -2,6 +2,12 @@ name: fastbuild oc-ubi and snapshot
 
 on:
   workflow_dispatch:
+    inputs:
+      OPT_REBUILD:
+        description: 'Force rebuild from base image (discard autobuild-inc cache). Use when feed state is stuck or cache is stale.'
+        required: false
+        default: '0'
+        type: string
 
 permissions:
   contents: write
@@ -39,6 +45,7 @@ jobs:
       HOST_WORK_DIR: ${{github.workspace}}
       BUILD_MODE: ${{matrix.mode}}
       BUILD_TARGET: ${{matrix.target}}
+      OPT_REBUILD: ${{ github.event.inputs.OPT_REBUILD || '0' }}
 
     steps:
     - name: Checkout
